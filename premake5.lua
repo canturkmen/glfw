@@ -1,12 +1,13 @@
 project "GLFW"
   kind "StaticLib"
   language "C"
+  staticruntime "on"
 
   targetdir ("bin/" .. outputdir .. "/%{prj.name}")
   objdir ("intermediate/" .. outputdir .. "/%{prj.name}")
      
-   files 
-   {
+  files 
+  {
      "include/GLFW/glfw3.h",
      "include/GLFW/glfw3native.h",
      "src/context.c",
@@ -16,12 +17,10 @@ project "GLFW"
      "src/monitor.c",
      "src/window.c",
      "src/glfw_config.h"
-   }
+  }
    
-   filter "system:windows"
-    buildoptions { "-std=c11", "-lgdi32" } 
-    systemversion "latest"
-    staticruntime "On"
+    filter "system:windows"
+		systemversion "latest"
 
 		files
 		{
